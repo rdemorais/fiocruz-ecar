@@ -122,12 +122,39 @@ public class RelatorioServiceImpl implements RelatorioService {
 				eixo.setImgStatus(ecarFileSystem.getImageFromContext(eixo.getNomeCor().toLowerCase() + ".gif"));
 			}
 			
-			List<IettDto> oes = relatorioDao.listItens(filtro);
+			List<IettDto> oes;
+			
+			switch (tipoRelatorio) {
+			case EXECUTIVO:
+				oes = relatorioDao.listItens(filtro);
+				break;
+			case GERENCIAL:
+				oes = relatorioDao.listItensCiclo(filtro);
+				break;
+			default:
+				oes = new ArrayList<IettDto>();
+				break;
+			}
+			
+			
 			eixo.setDescendentes(oes);
 			for (IettDto oe : oes) {
 				filtro.setCodIettPai(oe.getId());
 				filtro.setNivel(Nivel.INICIATIVA);
-				List<IettDto> inicis = relatorioDao.listItens(filtro);
+				List<IettDto> inicis;
+				
+				switch (tipoRelatorio) {
+				case EXECUTIVO:
+					inicis = relatorioDao.listItens(filtro);
+					break;
+				case GERENCIAL:
+					inicis = relatorioDao.listItensCiclo(filtro);
+					break;
+				default:
+					inicis = new ArrayList<IettDto>();
+					break;
+				}
+				
 				oe.setDescendentes(inicis);
 				
 				if(tipoRelatorio.equals(TipoRelatorio.GERENCIAL)) {
