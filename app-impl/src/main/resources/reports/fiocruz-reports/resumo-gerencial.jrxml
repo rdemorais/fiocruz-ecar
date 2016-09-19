@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2016-09-09T00:27:44 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumo-executivo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e254c991-9492-45bd-9a06-4726329f8bcb">
+	<subDataset name="EixosDS" uuid="76f3e09a-8b8d-4a40-90ef-f754c61f51a1">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="sigla" class="java.lang.String"/>
+		<field name="nome" class="java.lang.String"/>
+		<field name="nomeResponsavel" class="java.lang.String"/>
+		<field name="descendentes" class="java.util.List"/>
+		<field name="emailResponsavel" class="java.lang.String"/>
+		<field name="imgStatus" class="java.lang.Object"/>
+		<field name="significadoCor" class="java.lang.String"/>
+		<field name="parecer" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="OeDs" uuid="3444fa98-55e1-4592-a447-523881ff8bf0">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="sigla" class="java.lang.String"/>
+		<field name="nome" class="java.lang.String"/>
+		<field name="nomeResponsavel" class="java.lang.String"/>
+		<field name="descendentes" class="java.util.List"/>
+		<field name="emailResponsavel" class="java.lang.String"/>
+		<field name="parecer" class="java.lang.String"/>
+		<field name="indicadores" class="java.util.List"/>
+	</subDataset>
+	<subDataset name="iniciativasDS" uuid="f06d9b6a-ad5a-49f2-87d2-e88a20eb0d02">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="sigla" class="java.lang.String"/>
+		<field name="nome" class="java.lang.String"/>
+		<field name="nomeResponsavel" class="java.lang.String"/>
+		<field name="emailResponsavel" class="java.lang.String"/>
+		<field name="parecer" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="DsIndicadores" uuid="19da9a1d-f75a-4b79-af61-b4ee04f0ff14">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="nome" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="dataAtual" class="java.lang.String"/>
+	<parameter name="logoHeader" class="java.lang.Object"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="listaItens" class="java.util.List"/>
+	<field name="ciclo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="340" y="2" width="213" height="28" forecolor="#7D7C7C" uuid="83e75571-9f92-4005-ba4a-425bd35ed185"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Plano de Monitoramento e Avaliação dos Objetivos Estratégicos da Fiocruz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="2" width="100" height="50" forecolor="#7D7C7C" uuid="e9732d5b-3bea-4db5-8786-288eab9cf2a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Resumo Gerencial]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="53" width="553" height="1" forecolor="#CFCFCF" uuid="22e29caa-d1d6-4dec-8dfb-c7ee87d3919a">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<image>
+				<reportElement x="3" y="0" width="104" height="49" uuid="131c1bee-6e22-4fb3-857d-423f3deb029a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{logoHeader}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="340" y="33" width="100" height="19" forecolor="#AB0A07" uuid="8212ae3f-950d-419c-93fe-f3750bace223"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<text><![CDATA[Período de Referência:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="440" y="33" width="113" height="19" forecolor="#AB0A07" uuid="c7e761d4-100d-450f-881d-fa458a29ec71"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ciclo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="237" splitType="Stretch">
+			<componentElement>
+				<reportElement x="1" y="6" width="553" height="231" uuid="364bda48-32d3-47d8-aaef-ec9e56bc884b">
+					<property name="net.sf.jasperreports.export.headertoolbar.table.name" value="lstEixos"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="EixosDS" uuid="4067321b-1894-4034-a70d-8a8298df6da3">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listaItens})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="231" width="553">
+						<rectangle radius="5">
+							<reportElement stretchType="RelativeToBandHeight" x="0" y="14" width="553" height="215" isPrintWhenDetailOverflows="true" uuid="65ed10b1-c963-4c0c-a45d-04e3206d48b1">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.1" lineStyle="Solid" lineColor="#D1D1D1"/>
+							</graphicElement>
+						</rectangle>
+						<textField>
+							<reportElement mode="Opaque" x="0" y="0" width="20" height="17" backcolor="#BFC8FF" uuid="fcf8601b-30ea-409c-a06f-abeb6699f89f"/>
+							<box>
+								<topPen lineWidth="0.1" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<leftPen lineWidth="0.1" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<bottomPen lineWidth="0.1" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#D1D1D1"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="9" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{sigla} + " - "]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement mode="Opaque" x="19" y="0" width="534" height="17" backcolor="#BFC8FF" uuid="c131101e-becb-473f-a352-6aa2b6aee09f"/>
+							<box>
+								<topPen lineWidth="0.1" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<bottomPen lineWidth="0.1" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<rightPen lineWidth="0.1" lineStyle="Solid" lineColor="#D1D1D1"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="9"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement positionType="Float" x="64" y="20" width="200" height="12" uuid="4cf44fbe-8ce4-4623-8471-e95786eb4350">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement>
+								<font size="9"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{nomeResponsavel}]]></textFieldExpression>
+						</textField>
+						<componentElement>
+							<reportElement positionType="Float" x="0" y="75" width="553" height="156" uuid="8df7ffd8-f6e0-400e-acec-cb232f781809">
+								<property name="net.sf.jasperreports.export.headertoolbar.table.name" value="lstOes"/>
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<jr:list printOrder="Vertical">
+								<datasetRun subDataset="OeDs" uuid="659dbedb-0e07-4b14-ae65-4792c5964c6e">
+									<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{descendentes})]]></dataSourceExpression>
+								</datasetRun>
+								<jr:listContents height="156" width="553">
+									<textField>
+										<reportElement x="0" y="15" width="25" height="12" uuid="8534a0f1-156d-494a-a5de-ff539b605dd1">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="9" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{sigla} + " - "]]></textFieldExpression>
+									</textField>
+									<textField isStretchWithOverflow="true">
+										<reportElement x="25" y="15" width="522" height="12" isPrintWhenDetailOverflows="true" uuid="b9818dba-577d-45e7-993f-4e12eb1e39ca"/>
+										<textElement>
+											<font size="9"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+									</textField>
+									<textField>
+										<reportElement positionType="Float" x="87" y="30" width="255" height="12" uuid="f8ff7868-91c8-4107-8846-763f8c7ad72b">
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+										</reportElement>
+										<textElement verticalAlignment="Middle">
+											<font size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{nomeResponsavel}]]></textFieldExpression>
+									</textField>
+									<staticText>
+										<reportElement x="0" y="0" width="553" height="15" uuid="910975ca-1e8a-4c78-9b0a-e5504c933b23"/>
+										<box leftPadding="5">
+											<topPen lineWidth="0.2" lineColor="#D1D1D1"/>
+											<bottomPen lineWidth="0.2" lineColor="#D1D1D1"/>
+										</box>
+										<textElement verticalAlignment="Middle">
+											<font size="8" isBold="true" isItalic="true"/>
+										</textElement>
+										<text><![CDATA[Objetivo]]></text>
+									</staticText>
+									<componentElement>
+										<reportElement positionType="Float" x="0" y="98" width="553" height="56" uuid="5dbaf0cf-3520-464a-9602-792e3efbb6d8">
+											<property name="net.sf.jasperreports.export.headertoolbar.table.name" value="lstIniciativas"/>
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+										</reportElement>
+										<jr:list printOrder="Vertical">
+											<datasetRun subDataset="iniciativasDS" uuid="b8520e30-dbcb-456c-874b-1d700ee2b243">
+												<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{descendentes})]]></dataSourceExpression>
+											</datasetRun>
+											<jr:listContents height="56" width="553">
+												<rectangle radius="2">
+													<reportElement x="7" y="0" width="540" height="53" uuid="f9bf96e8-7886-4c38-a1d6-1ba761358fac">
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+													</reportElement>
+													<graphicElement>
+														<pen lineWidth="0.2" lineColor="#D1D1D1"/>
+													</graphicElement>
+												</rectangle>
+												<textField>
+													<reportElement x="12" y="3" width="25" height="12" uuid="3cbd54e6-2d1a-470c-97aa-6f910e9ed65a">
+														<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+													</reportElement>
+													<textElement verticalAlignment="Middle">
+														<font size="8" isBold="true"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{sigla} + " - "]]></textFieldExpression>
+												</textField>
+												<textField isStretchWithOverflow="true">
+													<reportElement x="37" y="3" width="510" height="12" isPrintWhenDetailOverflows="true" uuid="ea10f903-88e7-4e81-a69f-30289af6a65d"/>
+													<textElement textAlignment="Left" verticalAlignment="Middle">
+														<font size="8"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+												</textField>
+												<textField>
+													<reportElement positionType="Float" x="95" y="17" width="240" height="12" uuid="1bd452e1-4476-4273-a3d9-f6f89266678f">
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+													</reportElement>
+													<textElement>
+														<font size="8"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{nomeResponsavel}]]></textFieldExpression>
+												</textField>
+												<staticText>
+													<reportElement positionType="Float" x="32" y="17" width="62" height="12" uuid="76ad2fce-b840-4b74-923e-a5db3e5107be">
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+													</reportElement>
+													<textElement verticalAlignment="Middle">
+														<font size="8" isBold="true"/>
+													</textElement>
+													<text><![CDATA[Responsável:]]></text>
+												</staticText>
+												<textField>
+													<reportElement positionType="Float" x="335" y="17" width="200" height="12" forecolor="#7D7C7C" uuid="753147c8-d841-4910-ac3d-44c2d73eb322">
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+													</reportElement>
+													<textElement verticalAlignment="Top">
+														<font size="7" isItalic="true"/>
+													</textElement>
+													<textFieldExpression><![CDATA["("+$F{emailResponsavel}+")"]]></textFieldExpression>
+												</textField>
+												<staticText>
+													<reportElement positionType="Float" x="11" y="31" width="99" height="9" uuid="932fc771-12d7-43a9-9619-a5fd78a5f61a"/>
+													<textElement verticalAlignment="Middle">
+														<font fontName="DejaVu Sans" size="6"/>
+													</textElement>
+													<text><![CDATA[Parecer]]></text>
+												</staticText>
+												<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+													<reportElement positionType="Float" x="11" y="40" width="524" height="10" uuid="62d7fb0e-6bc9-43b3-9266-7b75670cc398">
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+													</reportElement>
+													<box topPadding="3" leftPadding="5">
+														<topPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+														<leftPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+														<bottomPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+														<rightPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+													</box>
+													<textElement markup="html">
+														<font fontName="DejaVu Sans" size="9"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{parecer}]]></textFieldExpression>
+												</textField>
+											</jr:listContents>
+										</jr:list>
+									</componentElement>
+									<rectangle>
+										<reportElement x="547" y="0" width="6" height="15" backcolor="#823130" uuid="54b1c3fe-680d-4a44-8ecb-48d3d55014e8">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<graphicElement>
+											<pen lineWidth="0.0"/>
+										</graphicElement>
+									</rectangle>
+									<staticText>
+										<reportElement positionType="Float" x="25" y="30" width="62" height="12" uuid="b4bb85ac-508c-4e45-bd6d-53ceef1efd97">
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+										</reportElement>
+										<textElement verticalAlignment="Middle">
+											<font size="8" isBold="true"/>
+										</textElement>
+										<text><![CDATA[Responsável:]]></text>
+									</staticText>
+									<textField>
+										<reportElement positionType="Float" x="342" y="30" width="200" height="12" forecolor="#7D7C7C" uuid="7e72c2bf-ebc7-4275-8984-ae3fe5ac4642">
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+										</reportElement>
+										<textElement verticalAlignment="Top">
+											<font size="7" isItalic="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA["("+$F{emailResponsavel}+")"]]></textFieldExpression>
+									</textField>
+									<staticText>
+										<reportElement positionType="Float" x="6" y="89" width="100" height="9" uuid="c0e4658f-141b-4834-88d9-43a8258a57be">
+											<printWhenExpression><![CDATA[$F{descendentes}.size() > 0]]></printWhenExpression>
+										</reportElement>
+										<textElement verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" size="6"/>
+										</textElement>
+										<text><![CDATA[Iniciativas]]></text>
+									</staticText>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement positionType="Float" x="7" y="53" width="539" height="8" uuid="beb64341-18de-429c-9233-6069f823b044">
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+										</reportElement>
+										<box topPadding="3" leftPadding="5">
+											<topPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+											<leftPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+											<bottomPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+											<rightPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+										</box>
+										<textElement markup="html">
+											<font fontName="DejaVu Sans" size="9"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{parecer}]]></textFieldExpression>
+									</textField>
+									<staticText>
+										<reportElement positionType="Float" x="7" y="44" width="99" height="9" uuid="89aa836b-9662-406f-bbf9-d7de4478a565"/>
+										<textElement verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" size="6"/>
+										</textElement>
+										<text><![CDATA[Parecer]]></text>
+									</staticText>
+									<staticText>
+										<reportElement positionType="Float" x="7" y="64" width="99" height="9" uuid="c398d16c-fc50-4eaf-a41f-76e47c314bd5"/>
+										<textElement verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" size="6"/>
+										</textElement>
+										<text><![CDATA[Indicadores]]></text>
+									</staticText>
+									<componentElement>
+										<reportElement positionType="Float" x="7" y="73" width="540" height="16" uuid="ea6a679b-c3a6-4638-804c-9f6743b47487">
+											<property name="net.sf.jasperreports.export.headertoolbar.table.name" value="lstIndicadores"/>
+										</reportElement>
+										<jr:list>
+											<datasetRun subDataset="DsIndicadores" uuid="90ee6926-7ae1-4af2-aa36-86468ec21566">
+												<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{indicadores})]]></dataSourceExpression>
+											</datasetRun>
+											<jr:listContents height="16" width="540">
+												<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+													<reportElement x="0" y="0" width="420" height="11" forecolor="#6B7FC9" uuid="fef64f7b-32e0-40db-8c6c-75a47bfea2aa">
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+													</reportElement>
+													<box leftPadding="5"/>
+													<textElement verticalAlignment="Middle">
+														<font fontName="DejaVu Sans" size="7"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+												</textField>
+												<line>
+													<reportElement positionType="Float" x="0" y="13" width="540" height="1" uuid="4643b4f1-20f9-43c0-a8cd-7315aa4c9524"/>
+													<graphicElement>
+														<pen lineWidth="0.2" lineColor="#D1D1D1"/>
+													</graphicElement>
+												</line>
+											</jr:listContents>
+										</jr:list>
+									</componentElement>
+								</jr:listContents>
+							</jr:list>
+						</componentElement>
+						<staticText>
+							<reportElement positionType="Float" x="2" y="20" width="62" height="12" uuid="7d85ee40-e35a-4539-8bce-18bd9d87273d">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement>
+								<font size="9" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Responsável:]]></text>
+						</staticText>
+						<textField>
+							<reportElement positionType="Float" x="64" y="32" width="200" height="12" forecolor="#7D7C7C" uuid="d2a38a37-4be8-4b8e-a366-d3e43dd5f9ef">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Top">
+								<font size="7" isItalic="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA["("+$F{emailResponsavel}+")"]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement positionType="Float" x="460" y="20" width="70" height="12" uuid="35926fb9-a325-4c25-8cf2-ec08980cbe86">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="6" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Qtd. Objetivos:]]></text>
+						</staticText>
+						<textField>
+							<reportElement x="530" y="20" width="23" height="12" uuid="ab82d77a-d4b1-4962-873d-64887c54dc61"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="6"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{descendentes}.size()]]></textFieldExpression>
+						</textField>
+						<line>
+							<reportElement x="0" y="44" width="553" height="1" uuid="17af2c7e-c023-40c0-b57c-5106bf7bee58"/>
+							<graphicElement>
+								<pen lineWidth="0.2" lineColor="#D1D1D1"/>
+							</graphicElement>
+						</line>
+						<image>
+							<reportElement x="270" y="20" width="15" height="15" uuid="442fb68b-f897-46fb-9a16-448092ade89b">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+							</reportElement>
+							<imageExpression><![CDATA[$F{imgStatus}]]></imageExpression>
+						</image>
+						<textField>
+							<reportElement x="287" y="20" width="100" height="15" uuid="af1f2e65-aed0-4a0c-8a13-a758f1fb5310"/>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font fontName="DejaVu Sans" size="6"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{significadoCor}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="8" y="58" width="537" height="14" uuid="7277fd01-97df-4811-b1f9-6304d0128539">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<box topPadding="3" leftPadding="5">
+								<topPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<leftPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<bottomPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+								<rightPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
+							</box>
+							<textElement markup="html">
+								<font fontName="DejaVu Sans" size="9"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{parecer}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement x="8" y="46" width="100" height="11" uuid="565eb016-e6ee-44b4-807e-07d5362e1a77"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="DejaVu Sans" size="6"/>
+							</textElement>
+							<text><![CDATA[Parecer]]></text>
+						</staticText>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="220" y="5" width="116" height="14" forecolor="#C7C7C7" uuid="361a831e-1b1d-405e-8cf6-eed29cb30ff6"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Emitido em " + $P{dataAtual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="5" width="20" height="14" forecolor="#C7C7C7" uuid="dc43a8a8-d454-4586-aa97-41273dbec77c"/>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pag. " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="2" width="555" height="1" forecolor="#CFCFCF" uuid="ffd6855f-2c06-43ff-89f3-72aa4eedf247">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<textField evaluationTime="Report">
+				<reportElement x="540" y="5" width="14" height="14" forecolor="#C7C7C7" uuid="297470a7-ec45-4e61-b9a8-b392229dfc51"/>
+				<textElement textAlignment="Left">
+					<font fontName="DejaVu Sans" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " +  $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
