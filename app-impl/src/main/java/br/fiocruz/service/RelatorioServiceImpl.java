@@ -141,6 +141,14 @@ public class RelatorioServiceImpl implements RelatorioService {
 			for (IettDto oe : oes) {
 				filtro.setCodIettPai(oe.getId());
 				filtro.setNivel(Nivel.INICIATIVA);
+				
+				if(oe.getNomeCor() == null) {
+					oe.setImgStatus(ecarFileSystem.getImageFromContext("branco.gif"));
+					oe.setSignificadoCor("Não Monitorado");
+				}else {
+					oe.setImgStatus(ecarFileSystem.getImageFromContext(oe.getNomeCor().toLowerCase() + ".gif"));
+				}
+				
 				List<IettDto> inicis;
 				
 				switch (tipoRelatorio) {
@@ -156,6 +164,15 @@ public class RelatorioServiceImpl implements RelatorioService {
 				}
 				
 				oe.setDescendentes(inicis);
+				
+				for (IettDto ini : inicis) {
+					if(ini.getNomeCor() == null) {
+						ini.setImgStatus(ecarFileSystem.getImageFromContext("branco.gif"));
+						ini.setSignificadoCor("Não Monitorado");
+					}else {
+						ini.setImgStatus(ecarFileSystem.getImageFromContext(ini.getNomeCor().toLowerCase() + ".gif"));
+					}
+				}
 				
 				if(tipoRelatorio.equals(TipoRelatorio.GERENCIAL)) {
 					List<IndicadorDto> inds = relatorioDao.listIndicadoresIett(oe.getId());

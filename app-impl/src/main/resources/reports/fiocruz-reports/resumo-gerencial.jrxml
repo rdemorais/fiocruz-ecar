@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2016-09-09T00:27:44 -->
+<!-- 2016-09-20T14:00:06 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resumo-executivo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e254c991-9492-45bd-9a06-4726329f8bcb">
 	<subDataset name="EixosDS" uuid="76f3e09a-8b8d-4a40-90ef-f754c61f51a1">
 		<queryString>
@@ -26,6 +26,8 @@
 		<field name="emailResponsavel" class="java.lang.String"/>
 		<field name="parecer" class="java.lang.String"/>
 		<field name="indicadores" class="java.util.List"/>
+		<field name="imgStatus" class="java.lang.Object"/>
+		<field name="significadoCor" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="iniciativasDS" uuid="f06d9b6a-ad5a-49f2-87d2-e88a20eb0d02">
 		<queryString>
@@ -36,6 +38,8 @@
 		<field name="nomeResponsavel" class="java.lang.String"/>
 		<field name="emailResponsavel" class="java.lang.String"/>
 		<field name="parecer" class="java.lang.String"/>
+		<field name="imgStatus" class="java.lang.Object"/>
+		<field name="significadoCor" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="DsIndicadores" uuid="19da9a1d-f75a-4b79-af61-b4ee04f0ff14">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
@@ -211,7 +215,7 @@
 											</datasetRun>
 											<jr:listContents height="56" width="553">
 												<rectangle radius="2">
-													<reportElement x="7" y="0" width="540" height="53" uuid="f9bf96e8-7886-4c38-a1d6-1ba761358fac">
+													<reportElement stretchType="RelativeToBandHeight" x="7" y="0" width="540" height="53" uuid="f9bf96e8-7886-4c38-a1d6-1ba761358fac">
 														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 													</reportElement>
 													<graphicElement>
@@ -270,7 +274,7 @@
 													<text><![CDATA[Parecer]]></text>
 												</staticText>
 												<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-													<reportElement positionType="Float" x="11" y="40" width="524" height="10" uuid="62d7fb0e-6bc9-43b3-9266-7b75670cc398">
+													<reportElement positionType="Float" x="74" y="42" width="461" height="8" forecolor="#8C8C8C" uuid="62d7fb0e-6bc9-43b3-9266-7b75670cc398">
 														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 													</reportElement>
 													<box topPadding="3" leftPadding="5">
@@ -280,10 +284,25 @@
 														<rightPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
 													</box>
 													<textElement markup="html">
-														<font fontName="DejaVu Sans" size="9"/>
+														<font fontName="DejaVu Sans" size="7"/>
 													</textElement>
 													<textFieldExpression><![CDATA[$F{parecer}]]></textFieldExpression>
 												</textField>
+												<textField>
+													<reportElement positionType="Float" x="24" y="42" width="50" height="8" uuid="435ba41d-993c-4a26-8b1e-2fa3269da6d1"/>
+													<textElement textAlignment="Left" verticalAlignment="Middle">
+														<font fontName="DejaVu Sans" size="6"/>
+													</textElement>
+													<textFieldExpression><![CDATA[$F{significadoCor}]]></textFieldExpression>
+												</textField>
+												<image>
+													<reportElement positionType="Float" x="11" y="42" width="10" height="10" uuid="6843c182-f58e-4490-92f1-c5963358ed18">
+														<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+														<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+														<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+													</reportElement>
+													<imageExpression><![CDATA[$F{imgStatus}]]></imageExpression>
+												</image>
 											</jr:listContents>
 										</jr:list>
 									</componentElement>
@@ -323,7 +342,7 @@
 										<text><![CDATA[Iniciativas]]></text>
 									</staticText>
 									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-										<reportElement positionType="Float" x="7" y="53" width="539" height="8" uuid="beb64341-18de-429c-9233-6069f823b044">
+										<reportElement positionType="Float" x="70" y="54" width="472" height="8" forecolor="#8C8C8C" uuid="beb64341-18de-429c-9233-6069f823b044">
 											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 										</reportElement>
 										<box topPadding="3" leftPadding="5">
@@ -333,7 +352,7 @@
 											<rightPen lineWidth="0.2" lineStyle="Solid" lineColor="#D1D1D1"/>
 										</box>
 										<textElement markup="html">
-											<font fontName="DejaVu Sans" size="9"/>
+											<font fontName="DejaVu Sans" size="7"/>
 										</textElement>
 										<textFieldExpression><![CDATA[$F{parecer}]]></textFieldExpression>
 									</textField>
@@ -355,7 +374,7 @@
 										<reportElement positionType="Float" x="7" y="73" width="540" height="16" uuid="ea6a679b-c3a6-4638-804c-9f6743b47487">
 											<property name="net.sf.jasperreports.export.headertoolbar.table.name" value="lstIndicadores"/>
 										</reportElement>
-										<jr:list>
+										<jr:list printOrder="Vertical">
 											<datasetRun subDataset="DsIndicadores" uuid="90ee6926-7ae1-4af2-aa36-86468ec21566">
 												<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{indicadores})]]></dataSourceExpression>
 											</datasetRun>
@@ -379,6 +398,21 @@
 											</jr:listContents>
 										</jr:list>
 									</componentElement>
+									<textField>
+										<reportElement positionType="Float" x="20" y="54" width="50" height="8" uuid="efdc6ab0-3619-402b-bdf1-f3011a866570"/>
+										<textElement textAlignment="Left" verticalAlignment="Middle">
+											<font fontName="DejaVu Sans" size="6"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{significadoCor}]]></textFieldExpression>
+									</textField>
+									<image>
+										<reportElement positionType="Float" x="7" y="54" width="10" height="10" uuid="69809afc-d978-4b64-8aa6-de02943ea612">
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+										</reportElement>
+										<imageExpression><![CDATA[$F{imgStatus}]]></imageExpression>
+									</image>
 								</jr:listContents>
 							</jr:list>
 						</componentElement>
