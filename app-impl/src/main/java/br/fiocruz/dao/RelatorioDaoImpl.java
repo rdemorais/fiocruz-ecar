@@ -129,6 +129,29 @@ public class RelatorioDaoImpl extends DaoImpl implements RelatorioDao{
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<IettDto> listaEixos() throws AkulaRuntimeException {
+		try {
+			StringBuffer hql = new StringBuffer();
+			
+			hql.append("SELECT new br.fiocruz.servico.dto.OEDto(");
+			hql.append("eixo.id, ");
+			hql.append("eixo.sigla, ");
+			hql.append("eixo.nome) ");
+			hql.append("FROM Iett eixo ");
+			hql.append("WHERE eixo.nivel = :nv ");
+			hql.append("AND eixo.ativo = 'S' ");
+			
+			Query q = em.createQuery(hql.toString());
+			
+			q.setParameter("nv", Nivel.EIXO.getNv());
+			
+			return q.getResultList();
+		} catch (Exception e) {
+			throw new AkulaDaoRuntimeException(e.getMessage(), e);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<OEDto> listaOEs() throws AkulaRuntimeException {
 		try {
 			StringBuffer hql = new StringBuffer();

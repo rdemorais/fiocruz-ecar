@@ -15,4 +15,5 @@ public interface RelatorioDao extends Dao{
 	public List<IettDto> listItensCiclo(FiltroDto filtro) throws AkulaRuntimeException;
 	public List<IettDto> listItens(FiltroDto filtro) throws AkulaRuntimeException;
 	public List<OEDto> listaOEs() throws AkulaRuntimeException;
+	public List<IettDto> listaEixos() throws AkulaRuntimeException;
 }

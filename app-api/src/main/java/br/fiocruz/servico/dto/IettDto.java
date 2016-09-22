@@ -21,11 +21,14 @@ public class IettDto {
 	
 	}
 	
-	public IettDto(Long id, String sigla, String nome, String nomeResponsavel, String emailResponsavel) {
-		super();
+	public IettDto(Long id, String sigla, String nome) {
 		this.id = id;
 		this.sigla = sigla;
 		this.nome = nome;
+	}
+	
+	public IettDto(Long id, String sigla, String nome, String nomeResponsavel, String emailResponsavel) {
+		this(id, sigla, nome);
 		this.nomeResponsavel = nomeResponsavel;
 		this.emailResponsavel = emailResponsavel;
 	}
