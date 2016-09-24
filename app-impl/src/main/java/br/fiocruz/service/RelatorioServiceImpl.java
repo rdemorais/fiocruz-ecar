@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.fiocruz.dao.RelatorioDao;
@@ -37,8 +39,22 @@ public class RelatorioServiceImpl implements RelatorioService {
 	@Autowired
 	private RelatorioDao relatorioDao;
 	
+	public void configResponseReport(HttpServletResponse response, byte[] data) throws IOException, AkulaRuntimeException {
+		response.setContentType("application/pdf");
+		response.setHeader("Content-disposition", "attachment; filename=relatorio.pdf");
+	    response.setContentLength(data.length);
+	    
+		response.getOutputStream().write(data);
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
+	}
+	
 	public List<CicloDto> listCiclos() throws AkulaRuntimeException {
 		return relatorioDao.listCiclos();
+	}
+	
+	public List<IettDto> listEixos() throws AkulaRuntimeException {
+		return relatorioDao.listaEixos();
 	}
 	
 	private Map<String, Object> gerarParametros() throws IOException {

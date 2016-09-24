@@ -20,6 +20,7 @@ import br.fiocruz.model.Nivel;
 import br.fiocruz.servico.RelatorioService;
 import br.fiocruz.servico.dto.CicloDto;
 import br.fiocruz.servico.dto.FiltroDto;
+import br.fiocruz.servico.dto.IettDto;
 
 @Controller
 @CrossOrigin(value="*", maxAge=3600)
@@ -46,6 +47,21 @@ public class EcarRelatorioFiocruzController {
 		}
 	}
 	
+	@RequestMapping(value="/lista-eixos", 
+			method=RequestMethod.POST)
+	@ResponseBody
+	public List<IettDto> listEixos() {
+		try {
+			logger.debug("Emitindo lista de eixos...");
+			List<IettDto> eixos = relatorioService.listEixos();
+			
+			return eixos;
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return null;
+		}
+	}
+	
 	@RequestMapping(value="/download-rel-gerencial", 
 			method=RequestMethod.POST)
 	public void downloadRelatorioGerencial(HttpServletResponse response, @RequestBody FiltroDto filtro) {
@@ -55,13 +71,7 @@ public class EcarRelatorioFiocruzController {
 	    	filtro.setNivel(Nivel.EIXO);
 	    	byte[] data = relatorioService.gerarRelatorioGerencial(filtro);
 			
-			response.setContentType("application/pdf");
-			response.setHeader("Content-disposition", "attachment; filename=relatorioGerencial.pdf");
-		    response.setContentLength(data.length);
-		    
-			response.getOutputStream().write(data);
-			response.getOutputStream().flush();
-			response.getOutputStream().close();
+			relatorioService.configResponseReport(response, data);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 		} catch (AkulaRuntimeException e) {
@@ -78,13 +88,7 @@ public class EcarRelatorioFiocruzController {
 	    	filtro.setNivel(Nivel.EIXO);
 	    	byte[] data = relatorioService.gerarRelatorioExecutivo(filtro);
 			
-			response.setContentType("application/pdf");
-			response.setHeader("Content-disposition", "attachment; filename=relatorioExecutivo.pdf");
-		    response.setContentLength(data.length);
-		    
-			response.getOutputStream().write(data);
-			response.getOutputStream().flush();
-			response.getOutputStream().close();
+	    	relatorioService.configResponseReport(response, data);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 		} catch (AkulaRuntimeException e) {

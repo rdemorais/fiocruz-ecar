@@ -32,6 +32,7 @@ public class RelatorioServiceTest {
 		FiltroDto filtro = new FiltroDto();
 		filtro.setNivel(Nivel.EIXO);
 		filtro.setCodAref(11l);
+		filtro.setCodEixo(-1L);
 		
 		byte[] bytes = relatorioService.gerarRelatorioGerencial(filtro);
 		

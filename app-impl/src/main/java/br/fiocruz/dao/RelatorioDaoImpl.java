@@ -78,7 +78,12 @@ public class RelatorioDaoImpl extends DaoImpl implements RelatorioDao{
 			hql.append("AND aref.id = :codAref ");
 			if(filtro.getNivel() != Nivel.EIXO) {
 				hql.append("AND iett.iettPai.id = :idPai ");
+			}else {
+				if(filtro.getCodEixo() != -1L) {
+					hql.append("AND iett.id = :codEixo ");
+				}
 			}
+			
 			hql.append("ORDER BY iett.sigla, iett.nome");
 			
 			Query q = em.createQuery(hql.toString());
@@ -87,6 +92,10 @@ public class RelatorioDaoImpl extends DaoImpl implements RelatorioDao{
 			
 			if(filtro.getNivel() != Nivel.EIXO) {
 				q.setParameter("idPai", filtro.getCodIettPai());
+			}else {
+				if(filtro.getCodEixo() != -1L) {
+					q.setParameter("codEixo", filtro.getCodEixo());
+				}
 			}
 			
 			return q.getResultList();
@@ -133,7 +142,7 @@ public class RelatorioDaoImpl extends DaoImpl implements RelatorioDao{
 		try {
 			StringBuffer hql = new StringBuffer();
 			
-			hql.append("SELECT new br.fiocruz.servico.dto.OEDto(");
+			hql.append("SELECT new br.fiocruz.servico.dto.IettDto(");
 			hql.append("eixo.id, ");
 			hql.append("eixo.sigla, ");
 			hql.append("eixo.nome) ");

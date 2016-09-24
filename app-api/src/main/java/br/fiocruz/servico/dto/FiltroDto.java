@@ -6,6 +6,15 @@ public class FiltroDto {
 	private Nivel nivel;
 	private Long codAref;
 	private Long codIettPai;
+	private Long codEixo;
+	
+	public Long getCodEixo() {
+		return codEixo;
+	}
+
+	public void setCodEixo(Long codEixo) {
+		this.codEixo = codEixo;
+	}
 
 	public Long getCodIettPai() {
 		return codIettPai;
